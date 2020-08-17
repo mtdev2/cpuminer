@@ -1,40 +1,40 @@
 
-/*
- * Copyright 2010 Jeff Garzik
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the Free
- * Software Foundation; either version 2 of the License, or (at your option)
- * any later version.  See COPYING for more details.
- */
+/
+  Copyright 2010 Jeff Garzik
 
-#include "cpuminer-config.h"
-#define _GNU_SOURCE
+  This program is free software; you can redistribute it and/or modify it
+  under the terms of the GNU General Public License as published by the Free
+  Software Foundation; either version 2 of the License, or (at your option)
+  any later version.  See COPYING for more details.
+ /
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <stdint.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <time.h>
-#ifndef WIN32
-#include <sys/resource.h>
-#endif
-#include <getopt.h>
-#include <jansson.h>
-#include <curl/curl.h>
-#include "compat.h"
-#include "miner.h"
+include "cpuminer-config.h"
+define _GNU_SOURCE
 
-#define PROGRAM_NAME		"minerd"
-#define DEF_RPC_URL		"http://127.0.0.1:8332/"
-#define DEF_RPC_USERNAME	"rpcuser"
-#define DEF_RPC_PASSWORD	"rpcpass"
-#define DEF_RPC_USERPASS	DEF_RPC_USERNAME ":" DEF_RPC_PASSWORD
+include <stdio.h>
+include <stdlib.h>
+include <string.h>
+include <stdbool.h>
+include <stdint.h>
+include <unistd.h>
+include <sys/time.h>
+include <time.h>
+ifndef WIN32
+include <sys/resource.h>
+endif
+include <getopt.h>
+include <jansson.h>
+include <curl/curl.h>
+include "compat.h"
+include "miner.h"
 
-#ifdef __linux /* Linux specific policy and affinity management */
+define PROGRAM_NAME		"minerd"
+define DEF_RPC_URL		"http://127.0.0.1:8332/"
+define DEF_RPC_USERNAME	"rpcuser"
+define DEF_RPC_PASSWORD	"rpcpass"
+define DEF_RPC_USERPASS	DEF_RPC_USERNAME ":" DEF_RPC_PASSWORD
+
+ifdef __linux /* Linux specific policy and affinity management */
 #include <sched.h>
 static inline void drop_policy(void)
 {
